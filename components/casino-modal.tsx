@@ -21,12 +21,10 @@ export function CasinoModal({ site: propSite, rank: propRank, isOpen: propIsOpen
   // Auto-open after 10 seconds if no site prop provided
   useEffect(() => {
     if (!propSite) {
-      const hasShown = sessionStorage.getItem("promo-modal-shown")
-      if (!hasShown) {
+      {
         const timer = setTimeout(() => {
           setAutoOpenSite(bettingSites[0])
           setInternalOpen(true)
-          sessionStorage.setItem("promo-modal-shown", "true")
         }, 10000)
         return () => clearTimeout(timer)
       }
@@ -66,9 +64,8 @@ export function CasinoModal({ site: propSite, rank: propRank, isOpen: propIsOpen
         </button>
 
         <div
-          className={`rounded-lg p-6 bg-card ${
-            isFirstItem ? "border-2 border-primary shadow-2xl shadow-primary/30" : "border-2 border-border shadow-2xl"
-          }`}
+          className={`rounded-lg p-6 bg-card ${isFirstItem ? "border-2 border-primary shadow-2xl shadow-primary/30" : "border-2 border-border shadow-2xl"
+            }`}
         >
           {isFirstItem && <div className="croatia-accent-line absolute top-0 left-0 right-0 rounded-t-lg"></div>}
 
@@ -101,7 +98,6 @@ export function CasinoModal({ site: propSite, rank: propRank, isOpen: propIsOpen
               <div className="flex items-center justify-center mb-1">
                 <StarRating rating={site.rating / 2} size="md" showHover />
               </div>
-              <div className="text-muted-foreground text-xs">({site.reviews} recenzija)</div>
             </div>
 
             {/* CTA Button */}
